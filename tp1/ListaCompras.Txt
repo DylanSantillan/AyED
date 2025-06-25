@@ -1,0 +1,27 @@
+Leche Entera                     15
+Yogur Frutilla                    5
+Cerveza Rubia                    12
+Coca-Cola 2L                     13
+Pan Lactal                        2
+Asado Vacuno                      2
+Agua Mineral                     10
+Jamón Cocido                      3
+Sprite 1.5L                       5
+Zanahorias                       10
+Papas                            10
+Helado Chocolate                 22
+Vino Tinto                       10
+Shampoo Suave                     2
+Detergente Ultra                  6
+Pelota de Fútbol                  3
+Microondas                        1
+Salame                            5
+Pantalón Jean                     2
+Fernet                            4
+Juguete para gato                 2
+Factura Dulce                     4
+Plancha Electrica                 1
+Rompecabezas                     12
+Aquarius Pomelo                   5
+Crema de leche                    3
+Gancia                           10

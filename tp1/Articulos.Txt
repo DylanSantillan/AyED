@@ -1,0 +1,45 @@
+   10001  1 Leche Entera                     45    195.50 litros     1 10 2 15 3 10 4 20 5 15 6 25 0 10
+10000002  1 Yogur Frutilla                 1205    110.00 litros     2 20 3 15 0 10 4 20 5 10 1 25 6 20
+  100003  5 Cerveza Rubia                   120    250.75 litros     1 10 2 10 3 15 4 15 5 10 6 20 0 10
+10000004  8 Coca-Cola 2L                     60    350.00 litros     3 20 4 10 5 10 1 25 2 20 6 10 0 15
+    1005  3 Camiseta Blanca                  30    999.99 unidad     5 15 3 20 2 25 4 10 1 15 6 25 0 10
+10000006  1 Manteca La Serenísima            40    180.50 gramos     2 10 1 15 3 10 4 10 5 20 6 10 0 10
+  100007  2 Pan Lactal                       50     95.00 unidad     3 15 4 10 2 20 5 15 1 25 0 10 6 20
+ 1000008  4 Asado Vacuno                     20  18000.00 kilos      1 10 2 10 3 15 4 10 5 15 6 20 0 25
+10000009  6 Agua Mineral                    100     85.00 litros     2 20 3 10 5 15 1 20 4 25 0 10 6 10
+10000010  7 Jamón Cocido                     35   1200.00 gramos     5 15 6 25 0 15 1 10 2 10 3 20 4 15
+10000011  8 Sprite 1.5L                      65    275.00 litros     3 10 4 10 2 20 5 15 6 25 0 15 1 10
+  100012  9 Zanahorias                       80     45.30 kilos      1 10 2 10 4 15 5 15 6 20 0 10 3 10
+10000013  9 Papas                          1000     39.90 kilos      1 10 3 10 4 20 2 20 5 10 6 25 0 15
+10000014 10 Helado Chocolate                 22    850.75 gramos     2 15 3 15 0 20 1 25 4 10 6 15 5 10
+ 1000015  1 Queso Cremoso                    28    785.20 gramos     1 10 4 20 3 15 5 25 2 10 6 20 0 10
+10000016  5 Vino Tinto                       40    450.00 litros     5 15 4 10 3 25 2 20 1 10 6 25 0 10
+10000017 11 Shampoo Suave                    30    399.99 unidad     1 15 2 10 4 20 3 15 5 10 0 15 6 25
+ 1000018 12 Detergente Ultra                 25    189.90 unidad     2 15 3 20 4 15 1 10 5 15 6 25 0 10
+10000019 13 Pelota de Fútbol                 10  15000.00 unidad     4 20 3 15 5 10 6 10 2 20 0 10 1 25
+10000020 14 Microondas                        5 900000.00 unidad     2 15 3 10 1 10 6 25 0 10 4 15 5 10
+  100021 15 Comida para perro                30    320.00 kilos      3 15 1 10 5 15 2 25 0 15 4 10 6 20
+10000022  7 Salame                           45    980.30 gramos     4 20 2 20 1 10 5 10 3 10 0 15 6 25
+10000023  3 Pantalón Jean                    20  35000.00 unidad     5 25 3 10 1 20 6 25 0 10 2 15 4 10
+  100024  6 Jugo Naranja                     75    120.00 litros     1 15 2 10 3 25 5 10 4 15 6 10 0 10
+10000025  2 Medialunas                       40     80.00 unidad     4 10 5 10 3 10 2 25 0 15 6 20 1 15
+  100026 11 Acondicionador Plus              30    429.00 unidad     2 20 4 15 3 25 1 10 0 15 5 20 6 25
+10000027 12 Limpiador Pisos                  50    210.00 unidad     3 15 2 10 5 25 1 10 6 20 0 15 4 15
+10000028  4 Milanesa de Pollo              3005    960.00 gramos     4 20 1 10 3 25 5 15 0 10 6 25 2 15
+  100029  8 Pepsi 2.25                       55    345.00 litros     5 20 4 10 3 15 1 25 0 10 6 20 2 15
+10000030  5 Fernet                           45  12000.00 litros     3 20 2 10 4 25 5 15 0 10 6 25 1 10
+10000031 15 Juguete para gato                20    199.00 unidad     1 10 3 10 2 25 4 20 5 15 0 10 6 25
+ 1000032  2 Factura Dulce                     0     85.00 unidad     5 10 1 15 4 25 3 15 0 10 2 10 6 20
+   10033  1 Ricota                           28    300.00 gramos     2 10 3 15 1 25 4 15 5 10 6 25 0 20
+    1034  3 Remera Negra                     25    850.00 unidad     1 15 5 20 4 25 3 10 6 20 2 15 0 10
+10000035  9 Tomates                          70     55.40 kilos      2 15 1 10 4 25 5 10 6 20 0 10 3 10
+10000036 14 Plancha Electrica                10  44900.00 unidad     3 20 4 10 1 15 5 25 6 10 0 10 2 20
+10000037 10 Helado Vainilla                  20    825.90 gramos     4 15 3 25 1 10 2 20 0 10 5 15 6 25
+  100038 13 Rompecabezas                     15    550.00 unidad     5 10 2 20 3 15 4 25 6 20 0 15 1 10
+10000039  7 Mortadela                        38    870.20 gramos     1 15 3 10 5 20 4 10 0 15 2 25 6 10
+10000040  6 Soda                             80     75.00 litros     2 20 1 10 3 25 4 10 6 15 5 10 0 15
+  100041  8 Aquarius Pomelo                   2    130.00 litros     3 10 4 15 5 10 2 20 6 25 0 15 1 15
+10000042  4 Pollo Entero                     30   1500.00 kilos      4 20 1 10 2 15 3 10 5 25 6 10 0 20
+10000043  1 Crema de leche                   22    210.00 litros     3 10 2 15 1 25 4 15 5 10 6 20 0 15
+   10044  5 Gancia                           25    999.90 litros     5 10 2 25 3 15 1 10 4 20 6 15 0 15
+ 1000045 10 Hamburguesas                      0    780.00 gramos     2 15 1 25 3 10 5 20 6 15 0 10 4 15
