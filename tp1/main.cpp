@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+
 using namespace std;
 
 const int MAX_ARTICULOS = 10000;
@@ -20,7 +21,7 @@ struct Articulo {
     short promociones[14];
 };  // Articulos.Txt
 
-struct descArticulo {
+struct DescArticulo {
     str30 descripcion;
     int posArticulo;
     bool estado;
@@ -28,50 +29,74 @@ struct descArticulo {
 
 struct Rubro {
     short codRubro;
-    str20 descripcion[21];
+    str20 descripcion;
 };  // Rubros.Txt
 
 struct ItemCompra {
-    str30 descripcion[31];
+    str30 descripcion;
     short cantidad;
 };  // ListaCompras.Txt
 
 typedef Articulo tvrArticulos[MAX_ARTICULOS];
-typedef descArticulo tvrIndDescripArt[MAX_ARTICULOS];
+typedef DescArticulo tvrIndDescripArt[MAX_ARTICULOS];
 typedef ItemCompra tvrListaCompras[MAX_LISTA_COMPRAS];
 
-bool leerDescArticulo(ifstream &IndDescrip, descArticulo &rDescArticulo) {
-    IndDescrip.get(rDescArticulo.descripcion, 31);
-    IndDescrip >> rDescArticulo.posArticulo;
-    IndDescrip >> rDescArticulo.estado;
-    IndDescrip.ignore();
-    return IndDescrip.good();
+bool leerIndDescrip(ifstream &IndDescripArt, DescArticulo &rDescArticulo);
+bool leerListaCompras(ifstream &ListaCompras, ItemCompra &rItemCompra);
+
+void procIndDescrip(ifstream &IndDescripArt, tvrIndDescripArt vrIndDescripArt);
+void ProcListaCompras(ifstream &ListaCompras, tvrListaCompras &vrListaCompras);
+
+int main() {
+    tvrIndDescripArt vrIndDescripArt;
+    tvrListaCompras vrListaCompras;
+    tvrArticulos vrArticulos;
+
+    ifstream IndDescripArt("IndDescripArt.Txt");
+    ifstream ListaCompras("ListaCompras.Txt");
+    ifstream Articulos("Articulos.Txt");
+
+    procIndDescrip(IndDescripArt, vrIndDescripArt);
+    ProcListaCompras(ListaCompras, vrListaCompras);
+
+    IndDescripArt.close();
+    ListaCompras.close();
+    return 0;
 }
 
-void procIndDescrip(ifstream &IndDescrip, tvrIndDescripArt vrIndDescripArt) {
-    int cant = 0;
-    descArticulo rDescArticulo;
+bool leerIndDescrip(ifstream &IndDescripArt, DescArticulo &rDescArticulo) {
+    IndDescripArt.get(rDescArticulo.descripcion, 31);
+    IndDescripArt >> rDescArticulo.posArticulo;
+    IndDescripArt >> rDescArticulo.estado;
+    IndDescripArt.ignore();
+    return IndDescripArt.good();
+}
 
-    while (leerDescArticulo(IndDescrip, rDescArticulo) &&
+void procIndDescrip(ifstream &IndDescripArt, tvrIndDescripArt vrIndDescripArt) {
+    int cant = 0;
+    DescArticulo rDescArticulo;
+
+    while (leerIndDescrip(IndDescripArt, rDescArticulo) &&
            cant < MAX_ARTICULOS) {
         vrIndDescripArt[cant] = rDescArticulo;
-        cout << vrIndDescripArt[cant].posArticulo << "\n";
         cant++;
     }
 }
 
-int main() {
-    tvrArticulos vrArticulos;
-    tvrIndDescripArt vrIndDescripArt;
-    tvrListaCompras vrListaCompras;
+bool leerListaCompras(ifstream &ListaCompras, ItemCompra &rItemCompra) {
+    ListaCompras.get(rItemCompra.descripcion, 31);
+    ListaCompras >> rItemCompra.cantidad;
+    ListaCompras.ignore();
+    return ListaCompras.good();
+}
 
-    ifstream Articulos("Articulos.Txt");
-    ifstream IndDescrip("IndDescripArt.Txt");
-    ifstream Rubros("Rubros.Txt");
-    ifstream Lista("ListaCompras.Txt");
+void ProcListaCompras(ifstream &ListaCompras, tvrListaCompras &vrListaCompras) {
+    int cant = 0;
+    ItemCompra rItemCompra;
 
-    procIndDescrip(IndDescrip, vrIndDescripArt);
-    IndDescrip.close();
-
-    return 0;
+    while (leerListaCompras(ListaCompras, rItemCompra) &&
+           cant < MAX_LISTA_COMPRAS) {
+        vrListaCompras[cant] = rItemCompra;
+        cant++;
+    }
 }
