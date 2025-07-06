@@ -1,5 +1,5 @@
 47391827  1 Leche Entera                    475    195.50 litros     1 10 2 15 3 10 4 20 5 15 6 25 0 10
-81237013  5 Cerveza Rubia                   120    250.75 litros     1 10 2 10 3 15 4 15 5 10 6 20 0 10
+81237013  5 Cerveza Rubia                     0    250.75 litros     1 10 2 10 3 15 4 15 5 10 6 20 0 10
   529465  3 Camiseta Blanca                 370    999.99 unidad     5 15 3 20 2 25 4 10 1 15 6 25 0 10
 98351022  1 Yogur Frutilla                 1205    110.00 litros     2 20 3 15 0 10 4 20 5 10 1 25 6 20
 38527190  4 Asado Vacuno                    260  18000.00 kilos      1 10 2 10 3 15 4 10 5 15 6 20 0 25
