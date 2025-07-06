@@ -1,3 +1,4 @@
+#include <cstring>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -105,7 +106,7 @@ bool LeerCompra(ifstream &Compras, sCompra &rCompra) {
 }
 
 void Abrir(sArchivos &arch) {
-    arch.Articulos.open("Articulos.txt");
+    arch.Articulos.open("ArticulosM.txt");
     arch.DescArticulos.open("IndDescripArt.txt");
     arch.Rubros.open("Rubros.txt");
     arch.Compras.open("ListaCompras.txt");
@@ -138,6 +139,60 @@ void VolcarArchivos(sArchivos &arch, sRegistros &reg) {
     }
 }
 
+int BusBinVec(tvrDescArticulos &vrDescArticulo, str30 clave, ushort card) {
+    int prim = 0;
+    int ult = card - 1;
+    int med;
+    int cmp;
+
+    while (prim <= ult) {
+        med = (prim + ult) / 2;
+        cmp = strcmp(vrDescArticulo[med].descArt, clave);
+        if (cmp == 0)
+            return med;
+        else if (cmp < 0)
+            prim = med + 1;
+        else
+            ult = med - 1;
+    }
+    return -1;
+}
+
+void ActLinea(fstream &Articulos, sArticulo &rArticulo, ushort posArt) {
+    Articulos.clear();
+    Articulos.seekp(104 * posArt);
+
+    Articulos << "00000000 00 000000000000000000000000000000 0000 000000.00 "
+                 "0000000000 0 00 0 00 0 00 0 00 0 00 0 00 0 00";
+    Articulos << "\n";
+}
+
+void ProcCompras(sArchivos &arch, sRegistros &reg) {
+    sCompra compra;
+    short pos;
+    ushort posArt;
+
+    for (ushort i = 0; i < reg.cantCompra; i++) {
+        compra = reg.vrCompras[i];
+        pos = BusBinVec(reg.vrDescArticulos, compra.descArt, reg.cantArt);
+        posArt = reg.vrDescArticulos[pos].posArt;
+
+        if (pos == -1 || !reg.vrDescArticulos[pos].estado) {
+            reg.vrCompras[i].cantReq = 0;
+            continue;
+        }
+
+        if (reg.vrArticulos[posArt].stock < reg.vrCompras[i].cantReq) {
+            reg.vrCompras[i].cantReq = reg.vrArticulos[posArt].stock;
+            reg.vrArticulos[posArt].stock = 0;
+        } else {
+            reg.vrArticulos[posArt].stock -= reg.vrCompras[i].cantReq;
+        }
+
+        ActLinea(arch.Articulos, reg.vrArticulos[posArt], posArt);
+    }
+}
+
 void Cerrar(sArchivos &arch) {
     arch.Articulos.close();
     arch.DescArticulos.close();
@@ -151,6 +206,7 @@ int main() {
 
     Abrir(arch);
     VolcarArchivos(arch, reg);
+    ProcCompras(arch, reg);
     Cerrar(arch);
 
     return 0;
