@@ -117,8 +117,8 @@ void VolcarArchivos(sArchivos &arch, sRegistros &reg) {
     sRubro rRubro;
     sCompra rCompra;
 
-    while (!arch.Articulos.eof() && reg.cantArt < MAX_ARTICULOS) {
-        LeerArticulo(arch.Articulos, rArticulo);
+    while (LeerArticulo(arch.Articulos, rArticulo) &&
+           reg.cantArt < MAX_ARTICULOS) {
         reg.vrArticulos[reg.cantArt++] = rArticulo;
     }
 
@@ -132,13 +132,12 @@ void VolcarArchivos(sArchivos &arch, sRegistros &reg) {
         reg.vrRubros[i] = rRubro;
     }
 
-    while (!arch.Compras.eof() && reg.cantCompra < MAX_COMPRAS) {
-        LeerCompra(arch.Compras, rCompra);
+    while (LeerCompra(arch.Compras, rCompra) && reg.cantCompra < MAX_COMPRAS) {
         reg.vrCompras[reg.cantCompra++] = rCompra;
     }
 }
 
-int BusBinVec(tvrDescArticulos &vrDescArticulo, str30 clave, ushort card) {
+int BusBinArt(tvrDescArticulos &vrDescArticulo, str30 clave, ushort card) {
     int prim = 0;
     int ult = card - 1;
     int med;
@@ -183,7 +182,7 @@ void ProcCompras(sArchivos &arch, sRegistros &reg) {
 
     for (ushort i = 0; i < reg.cantCompra; i++) {
         compra = reg.vrCompras[i];
-        pos = BusBinVec(reg.vrDescArticulos, compra.descArt, reg.cantArt);
+        pos = BusBinArt(reg.vrDescArticulos, compra.descArt, reg.cantArt);
         posArt = reg.vrDescArticulos[pos].posArt;
 
         if (pos == -1 || !reg.vrDescArticulos[pos].estado) {
@@ -202,6 +201,102 @@ void ProcCompras(sArchivos &arch, sRegistros &reg) {
     }
 }
 
+void IntCmb(sArticulo &rArticulo1, sArticulo &rArticulo2) {
+    sArticulo aux = rArticulo1;
+    rArticulo1 = rArticulo2;
+    rArticulo2 = aux;
+}
+
+void OrdxBur(tvrArticulos &vrArticulos, ushort card) {
+    ushort k = 0;
+    bool ordenado;
+
+    do {
+        ordenado = true;
+        k++;
+
+        for (ushort i = 1; i < card - k; i++) {
+            if (vrArticulos[i].codRub > vrArticulos[i + 1].codRub) {
+                ordenado = false;
+                IntCmb(vrArticulos[i], vrArticulos[i + 1]);
+            }
+        }
+    } while (!ordenado);
+}
+
+string Replicate(char car, ushort n) {
+    string cad = "";
+    for (ushort i = 1; i <= n; i++) cad += car;
+    return cad;
+}
+
+int BusBinRub(tvrRubros &vrRubros, short clave, ushort card) {
+    int prim = 0;
+    int ult = card - 1;
+    int med;
+    int cmp;
+
+    while (prim <= ult) {
+        med = (prim + ult) / 2;
+        cmp = vrRubros[med].codRub - clave;
+        if (cmp == 0)
+            return med;
+        else if (cmp < 0)
+            prim = med + 1;
+        else
+            ult = med - 1;
+    }
+    return -1;
+}
+
+void EmitirArt_x_Rubro(sArchivos &arch, sRegistros &reg) {
+    OrdxBur(reg.vrArticulos, reg.cantArt);
+
+    int ancho = 105;
+    string titulo = "Listado de Articulos ordenados por Código de Rubro";
+    ushort codRub = 100;
+
+    freopen("Ticket.txt", "w", stdout);
+
+    cout << Replicate('-', ancho) << "\n";
+    cout << Replicate(' ', (ancho - titulo.length()) / 2) << titulo << "\n";
+    cout << Replicate('=', ancho) << "\n";
+
+    for (ushort i = 0; i < reg.cantArt; i++) {
+        if (reg.vrArticulos[i].codRub != codRub) {
+            codRub = reg.vrArticulos[i].codRub;
+
+            if (BusBinRub(reg.vrRubros, codRub, RUBROS) >= 1) {
+                cout << "\n";
+            }
+            cout
+                << "Cod. Rubro: " << codRub << " "
+                << reg.vrRubros[BusBinRub(reg.vrRubros, codRub, RUBROS)].descRub
+                << "\n";
+            cout << "Cod.Art. Descripcion                    Stk. Pre.Uni.  "
+                    "U.Med.     TD % TD % TD % TD % TD % TD % TD %"
+                 << "\n";
+            cout << Replicate('-', ancho) << "\n";
+        }
+
+        cout << setw(8) << reg.vrArticulos[i].codArt << " ";
+        cout << setw(30) << reg.vrArticulos[i].descArt << " ";
+        cout << setw(4) << reg.vrArticulos[i].stock << " ";
+        cout << fixed << setprecision(2) << setw(9) << reg.vrArticulos[i].preUni
+             << " ";
+        cout << setw(10) << reg.vrArticulos[i].medida;
+
+        for (ushort j = 0; j < (OFERTAS / 2); j++) {
+            cout << ' ' << reg.vrArticulos[i].ofertas[2 * j];
+            cout << ' ' << setw(2) << reg.vrArticulos[i].ofertas[2 * j + 1];
+        }
+
+        cout << "\n";
+    }
+
+    fclose(stdout);
+}
+
 void Cerrar(sArchivos &arch) {
     arch.Articulos.close();
     arch.DescArticulos.close();
@@ -216,6 +311,7 @@ int main() {
     Abrir(arch);
     VolcarArchivos(arch, reg);
     ProcCompras(arch, reg);
+    EmitirArt_x_Rubro(arch, reg);
     Cerrar(arch);
 
     return 0;
