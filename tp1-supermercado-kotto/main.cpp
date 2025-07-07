@@ -12,6 +12,7 @@ typedef unsigned short ushort;
 
 const ushort MAX_ARTICULOS = 10000;
 const ushort MAX_COMPRAS = 100;
+const ushort LINEA_ART = 104;
 const ushort RUBROS = 15;
 const ushort OFERTAS = 14;
 
@@ -46,7 +47,6 @@ typedef sDescArticulo tvrDescArticulos[MAX_ARTICULOS];
 typedef sRubro tvrRubros[RUBROS];
 typedef sCompra tvrCompras[MAX_COMPRAS];
 
-// Agrupa los archivos de entrada/salida
 struct sArchivos {
     fstream Articulos;
     ifstream DescArticulos;
@@ -54,7 +54,6 @@ struct sArchivos {
     ifstream Compras;
 };
 
-// Agrupa los registros principales
 struct sRegistros {
     tvrArticulos vrArticulos;
     tvrDescArticulos vrDescArticulos;
@@ -160,10 +159,20 @@ int BusBinVec(tvrDescArticulos &vrDescArticulo, str30 clave, ushort card) {
 
 void ActLinea(fstream &Articulos, sArticulo &rArticulo, ushort posArt) {
     Articulos.clear();
-    Articulos.seekp(104 * posArt);
+    Articulos.seekp(LINEA_ART * posArt);
 
-    Articulos << "00000000 00 000000000000000000000000000000 0000 000000.00 "
-                 "0000000000 0 00 0 00 0 00 0 00 0 00 0 00 0 00";
+    Articulos << setw(8) << rArticulo.codArt << " ";
+    Articulos << setw(2) << rArticulo.codRub << " ";
+    Articulos << setw(30) << rArticulo.descArt << " ";
+    Articulos << setw(4) << rArticulo.stock << " ";
+    Articulos << fixed << setprecision(2) << setw(9) << rArticulo.preUni << " ";
+    Articulos << setw(10) << rArticulo.medida;
+
+    for (ushort i = 0; i < (OFERTAS / 2); i++) {
+        Articulos << ' ' << rArticulo.ofertas[2 * i];
+        Articulos << ' ' << setw(2) << rArticulo.ofertas[2 * i + 1];
+    }
+
     Articulos << "\n";
 }
 
