@@ -1,0 +1,26 @@
+Yogur Frutilla                  5
+Pan Lactal                      2
+Manteca La Serenisima           4
+Agua Mineral                   12
+Cerveza Rubia                   3
+Zanahorias                      3
+Detergente Ultra                1
+Helado Chocolate               10
+Pelota de Futbol                1
+Vino Tinto                      6
+Comida para perro               2
+Salame                          5
+Banana                         17
+Limpiador Pisos                 3
+Microondas                      1
+Milanesa de Pollo               5
+Ricota                         34
+Factura Dulce                  12
+Rompecabezas                    2
+Plancha Electrica               1
+Tomates                         6
+Remera Negra                   32
+Pollo Entero                   10
+Naranja                        52
+Gancia                          2
+Aquarius Pomelo                12

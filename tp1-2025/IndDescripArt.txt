@@ -1,0 +1,45 @@
+Acondicionador Plus            24 1
+Agua Mineral                    6 1
+Aquarius Pomelo                42 1
+Asado Vacuno                    4 1
+Banana                         25 1
+Camiseta Blanca                 2 1
+Cerveza Rubia                   1 0
+Coca-Cola 2L                   18 1
+Comida para perro              20 1
+Crema de leche                 41 1
+Detergente Ultra                9 1
+Factura Dulce                  31 0
+Fernet                         29 1
+Gancia                         43 1
+Helado Chocolate               12 1
+Helado Vainilla                36 1
+Jamon Cocido                    8 1
+Juguete para gato              30 1
+Leche Entera                    0 1
+Limpiador Pisos                26 1
+Manteca La Serenisima           7 1
+Medialunas                     23 1
+Microondas                     17 1
+Milanesa de Pollo              27 1
+Mortadela                      37 1
+Naranja                        44 1
+Pan Lactal                      5 1
+Pantalon Jean                  21 1
+Papas                          14 1
+Pelota de Futbol               15 1
+Pepsi 2.25                     28 1
+Plancha Electrica              33 1
+Pollo Entero                   40 1
+Queso Cremoso                  13 1
+Remera Negra                   34 1
+Ricota                         32 1
+Rompecabezas                   38 1
+Salame                         19 1
+Shampoo Suave                  22 1
+Soda                           39 1
+Sprite 1.5L                    10 1
+Tomates                        35 1
+Vino Tinto                     16 1
+Yogur Frutilla                  3 1
+Zanahorias                     11 1
